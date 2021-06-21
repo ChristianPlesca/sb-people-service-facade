@@ -1,6 +1,7 @@
 package com.example.peopleservicefacade.boundary;
 
-import com.example.peopleservicefacade.boundary.CountryInfo;
+import com.example.peopleservicefacade.entity.dto.CountryInfo;
+
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
