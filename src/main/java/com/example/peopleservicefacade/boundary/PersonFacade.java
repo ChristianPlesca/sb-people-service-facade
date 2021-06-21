@@ -6,7 +6,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+import com.example.peopleservicefacade.boundary.PersonServiceClient;
+import com.example.peopleservicefacade.control.PersonService;
 import com.example.peopleservicefacade.entity.Person;
+import com.example.peopleservicefacade.entity.dto.PersonDTO;
 
 import java.util.List;
 
@@ -18,6 +21,9 @@ public class PersonFacade {
     @Autowired
     PersonServiceClient personServiceClient;
 
+    @Autowired
+    PersonService personService;
+
     @GetMapping
     public List<Person> getPeople() {
 
@@ -25,9 +31,9 @@ public class PersonFacade {
     }
 
     @GetMapping("{id}")
-    public Person getPerson(@PathVariable("id") Long id) {
+    public PersonDTO getPerson(@PathVariable("id") Long id) {
 
-        return personServiceClient.getPerson(id);
+        return personService.getPerson(id);
     }
 
     @PostMapping
