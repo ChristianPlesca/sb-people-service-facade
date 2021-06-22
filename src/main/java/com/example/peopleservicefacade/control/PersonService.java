@@ -2,6 +2,9 @@ package com.example.peopleservicefacade.control;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.example.peopleservicefacade.boundary.PersonServiceClient;
 import com.example.peopleservicefacade.boundary.RestCountriesClient;
 import com.example.peopleservicefacade.entity.Person;
@@ -20,6 +23,13 @@ public class PersonService {
 
     @Autowired
     private RestCountriesClient restCountriesClient;
+
+    public List<PersonDTO> getPeople() {
+        
+        return personServiceClient.getPeople().stream()
+                .map(person -> buildDTO(person))
+                .collect(Collectors.toList());
+    }
 
     public PersonDTO getPerson(Long id) {
 
