@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-import com.example.peopleservicefacade.boundary.PersonServiceClient;
 import com.example.peopleservicefacade.control.PersonService;
 import com.example.peopleservicefacade.entity.Person;
 import com.example.peopleservicefacade.entity.dto.PersonDTO;
@@ -17,9 +16,6 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "v1/people")
 public class PersonFacade {
-
-    @Autowired
-    PersonServiceClient personServiceClient;
 
     @Autowired
     PersonService personService;
