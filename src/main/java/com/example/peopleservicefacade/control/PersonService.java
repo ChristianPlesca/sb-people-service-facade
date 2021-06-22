@@ -36,6 +36,11 @@ public class PersonService {
         return buildDTO(personServiceClient.getPerson(id));
     }
 
+    public PersonDTO newPerson(Person person) {
+
+        return buildDTO(personServiceClient.newPerson(person));
+    }
+
     private PersonDTO buildDTO(Person person) {
 
         CountryInfo countryInfo = restCountriesClient.getCountry(person.getCountryCode());
