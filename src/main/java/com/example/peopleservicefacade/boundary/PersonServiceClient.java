@@ -1,5 +1,6 @@
 package com.example.peopleservicefacade.boundary;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,10 +13,12 @@ import com.example.peopleservicefacade.entity.Person;
 
 @FeignClient(name = "people", url = "${rest.person-service.url}")
 public interface PersonServiceClient {
-
+    
+    @Cacheable("people")
     @GetMapping("/v1/people")
     List<Person> getPeople();
 
+    @Cacheable("peopleId")
     @GetMapping("/v1/people/{id}")
     Person getPerson(@PathVariable("id") Long id);
 
